@@ -11,6 +11,7 @@ const categoryRouter = express.Router();
 categoryRouter.use(authMiddleware);
 categoryRouter.post('/categories', categoryController.create);
 categoryRouter.get('/categories', categoryController.search);
+categoryRouter.get('/categories/:id', categoryController.get);
 
 export {
     userRouter,

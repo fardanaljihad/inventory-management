@@ -1,4 +1,4 @@
-import { createCategoryValidation, searchCategoryValidation } from "../validation/category-validation.js";
+import { createCategoryValidation, getCategoryValidation, searchCategoryValidation } from "../validation/category-validation.js";
 import { validate } from "../validation/validation.js";
 import db from '../../models/index.js';
 import { ResponseError } from "../error/response-error.js";
@@ -45,6 +45,7 @@ const search = async (request) => {
 
     const categories = await Category.findAll({
         where: { [Op.and]: filters },
+        attributes: ["id", "name"],
         limit,
         offset
     });
@@ -63,7 +64,22 @@ const search = async (request) => {
     }
 }
 
+const get = async (id) => {
+    id = validate(getCategoryValidation, id);
+
+    const category = await Category.findOne({
+        where: { id: id },
+    });
+
+    if (!category) {
+        throw new ResponseError(404, "Category not found");
+    }
+
+    return category;
+}
+
 export default {
     create,
-    search
+    search,
+    get
 }
