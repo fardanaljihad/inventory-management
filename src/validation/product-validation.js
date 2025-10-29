@@ -23,11 +23,14 @@ const updateProductValidation = Joi.object({
     stock: Joi.number().integer().positive().required(),
     categoryId: Joi.string().uuid({ version: 'uuidv4' }).required(),
     modifiedBy: Joi.string().email({ minDomainSegments: 2 }).required()
-})
+});
+
+const deleteProductValidation = Joi.string().email({ minDomainSegments: 2 }).required();
 
 export {
     createProductValidation,
     searchProductValidation,
     getProductValidation,
-    updateProductValidation
+    updateProductValidation,
+    deleteProductValidation
 }

@@ -1,6 +1,6 @@
 import { validate } from "../validation/validation.js";
 import db from '../../models/index.js';
-import { createProductValidation, getProductValidation, searchProductValidation, updateProductValidation } from "../validation/product-validation.js";
+import { createProductValidation, deleteProductValidation, getProductValidation, searchProductValidation, updateProductValidation } from "../validation/product-validation.js";
 import { ResponseError } from "../error/response-error.js";
 import { Op } from "sequelize";
 
@@ -172,9 +172,34 @@ const update = async (id, request) => {
     });
 }
 
+const del = async (id, deletedBy) => {
+    id = validate(getProductValidation, id);
+    deletedBy = validate(deleteProductValidation, deletedBy);
+
+    const product = await Product.findOne({
+        where: { id: id },
+    });
+
+    if (!product) {
+        throw new ResponseError(404, "Product not found");
+    }
+
+    await product.update({ deleted_by: deletedBy });
+
+    await product.destroy();
+
+    return {
+        id: product.id,
+        name: product.name,
+        deletedBy: product.deleteBy,
+        deletedAt: product.deletedAt
+    };
+}
+
 export default {
     create,
     search,
     get,
-    update
+    update,
+    del
 }

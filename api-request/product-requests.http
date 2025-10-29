@@ -40,3 +40,9 @@ Authorization: Bearer {{ token }}
     "stock": 100,
     "categoryId": "de940239-9237-4ecd-9c17-3af93fe98fdb"
 }
+
+
+
+### DELETE category
+DELETE http://localhost:3000/products/{{ productId }}
+Authorization: Bearer {{ token }}
