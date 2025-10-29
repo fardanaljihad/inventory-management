@@ -1,0 +1,8 @@
+### POST create a new category
+POST http://localhost:3000/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NjE3MTQ5MjksImV4cCI6MTc2MTgwMTMyOX0.h03KsMaT18nvmnHEp__b0_5EC2aJZnPKyHO4mxYct2E
+
+{
+  "name": "Foods"
+}

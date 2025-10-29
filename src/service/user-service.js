@@ -7,7 +7,7 @@ import { generateToken } from "../auth/jwt.js";
 
 const { User } = db;
 
-const register = async (request, createdBy) => {
+const register = async (request) => {
     const user = validate(registerUserValidation, request);
 
     const countUser = await User.count({
@@ -17,11 +17,11 @@ const register = async (request, createdBy) => {
     });
 
     if (countUser === 1) {
-        throw new ResponseError(400, "Username already exists")
+        throw new ResponseError(400, "Category already exists")
     }
 
     user.password = await bcrypt.hash(user.password, 10);
-    user.created_by = createdBy;
+    user.created_by = request.createdBy;
     const newUser = await User.create(user);
 
     return {

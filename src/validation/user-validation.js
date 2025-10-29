@@ -3,7 +3,8 @@ import Joi from "joi";
 const registerUserValidation = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email({ minDomainSegments: 2 }).required(),
-    password: Joi.string().required()
+    password: Joi.string().required(),
+    createdBy: Joi.string().email({ minDomainSegments: 2 }).required()
 });
 
 const loginUserValidation = Joi.object({
