@@ -1,4 +1,4 @@
-import { createCategoryValidation, getCategoryValidation, searchCategoryValidation, updateCategoryValidation } from "../validation/category-validation.js";
+import { createCategoryValidation, deleteCategoryValidation, getCategoryValidation, searchCategoryValidation, updateCategoryValidation } from "../validation/category-validation.js";
 import { validate } from "../validation/validation.js";
 import db from '../../models/index.js';
 import { ResponseError } from "../error/response-error.js";
@@ -123,9 +123,32 @@ const update = async (id, request) => {
     });
 }
 
+const del = async (id, deletedBy) => {
+    id = validate(getCategoryValidation, id);
+    deletedBy = validate(deleteCategoryValidation, deletedBy);
+
+    const category = await Category.findOne({
+        where: { id: id },
+    });
+
+    if (!category) {
+        throw new ResponseError(404, "Category not found");
+    }
+
+    await category.update({ deleted_by: deletedBy });
+
+    await category.destroy();
+
+    return {
+        id: category.id,
+        name: category.name
+    };
+}
+
 export default {
     create,
     search,
     get,
-    update
+    update,
+    del
 }

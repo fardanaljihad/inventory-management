@@ -56,9 +56,23 @@ const update = async (req, res, next) => {
     }
 }
 
+const del = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const deletedBy = req.user.email;
+        const response = await categoryService.del(id, deletedBy);
+        res.status(200).json({
+            data: response
+        })
+    } catch (e) {
+        next(e);
+    }
+}
+
 export default {
     create,
     search,
     get,
-    update
+    update,
+    del
 }

@@ -13,6 +13,7 @@ categoryRouter.post('/categories', categoryController.create);
 categoryRouter.get('/categories', categoryController.search);
 categoryRouter.get('/categories/:id', categoryController.get);
 categoryRouter.put('/categories/:id', categoryController.update);
+categoryRouter.delete('/categories/:id', categoryController.del);
 
 export {
     userRouter,
