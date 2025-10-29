@@ -1,6 +1,6 @@
 ### VARIABLE
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
-@productId = 12719be3-c58e-47b8-8161-bbc0ec48f5ae
+@productId = 2635ac8f-9098-4fcf-afca-a6a93cd3db98
 
 
 ### POST create a new product
@@ -9,7 +9,7 @@ Content-Type: application/json
 Authorization: Bearer {{ token }}
 
 {
-    "name": "Cola",
+    "name": "Colaz",
     "price": 12.5,
     "stock": 100,
     "categoryId": "de940239-9237-4ecd-9c17-3af93fe98fdb"
@@ -35,7 +35,7 @@ Content-Type: application/json
 Authorization: Bearer {{ token }}
 
 {
-    "name": "Matcha",
+    "name": "Es Teh Manis",
     "price": 15.5,
     "stock": 100,
     "categoryId": "de940239-9237-4ecd-9c17-3af93fe98fdb"
