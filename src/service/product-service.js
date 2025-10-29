@@ -1,6 +1,6 @@
 import { validate } from "../validation/validation.js";
 import db from '../../models/index.js';
-import { createProductValidation, searchProductValidation } from "../validation/product-validation.js";
+import { createProductValidation, getProductValidation, searchProductValidation } from "../validation/product-validation.js";
 import { ResponseError } from "../error/response-error.js";
 import { Op } from "sequelize";
 
@@ -90,7 +90,22 @@ const search = async (request) => {
     };
 }
 
+const get = async (id) => {
+    id = validate(getProductValidation, id);
+
+    const product = await Product.findOne({
+        where: { id: id },
+    });
+
+    if (!product) {
+        throw new ResponseError(404, "Product not found");
+    }
+
+    return product;
+}
+
 export default {
     create,
-    search
+    search,
+    get
 }

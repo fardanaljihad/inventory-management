@@ -15,7 +15,10 @@ const searchProductValidation = Joi.object({
     name: Joi.string().allow("").max(255).optional(),
 });
 
+const getProductValidation = Joi.string().uuid({ version: 'uuidv4' }).required();
+
 export {
     createProductValidation,
-    searchProductValidation
+    searchProductValidation,
+    getProductValidation
 }

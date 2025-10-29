@@ -1,15 +1,26 @@
+### VARIABLE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+@productId = 8eee81ff-9ce6-4180-9ce7-5c1d8f77b22e
+
+
 ### POST create a new product
 POST http://localhost:3000/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+Authorization: Bearer {{ token }}
 
 {
-    "name": "Coffe",
+    "name": "Cola",
     "price": 12.5,
     "stock": 100,
     "categoryId": "de940239-9237-4ecd-9c17-3af93fe98fdb"
 }
 
-### GET all categories
+
+### GET all products
 GET http://localhost:3000/products?name=&category_name=&page=1&limit=10
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+Authorization: Bearer {{ token }}
+
+
+### GET product by id
+GET http://localhost:3000/products/{{ productId }}
+Authorization: Bearer {{ token }}

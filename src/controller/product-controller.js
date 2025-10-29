@@ -31,7 +31,20 @@ const search = async (req, res, next) => {
     }
 }
 
+const get = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const response = await productService.get(id);
+        res.status(200).json({
+            data: response
+        })
+    } catch (e) {
+        next(e);
+    }
+}
+
 export default {
     create,
-    search
+    search,
+    get
 }

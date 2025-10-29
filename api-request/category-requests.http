@@ -1,29 +1,43 @@
+### VARIABLE
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+@categoryId = 0d31fad1-a02b-4633-943f-6c33624f1c48
+
+
+
 ### POST create a new category
 POST http://localhost:3000/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+Authorization: Bearer {{ token }}
 
 {
   "name": "Drinks"
 }
+
+
 
 ### GET all categories
 GET http://localhost:3000/categories?name=&page=1&size=10
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+Authorization: Bearer {{ token }}
+
+
 
 ### GET category by id
-GET http://localhost:3000/categories/b5817177-31f1-40d1-b1a3-6b3fb1671f51
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+GET http://localhost:3000/categories/{{ categoryId }}
+Authorization: Bearer {{ token }}
+
+
 
 ### PUT category
-PUT http://localhost:3000/categories/b5817177-31f1-40d1-b1a3-6b3fb1671f51
+PUT http://localhost:3000/categories/{{ categoryId }}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+Authorization: Bearer {{ token }}
 
 {
   "name": "Drinks"
 }
 
+
+
 ### DELETE category
-DELETE http://localhost:3000/categories/b9f70800-12af-4f70-aa03-cf1bbfe3b986
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
+DELETE http://localhost:3000/categories/{{ categoryId }}
+Authorization: Bearer {{ token }}
