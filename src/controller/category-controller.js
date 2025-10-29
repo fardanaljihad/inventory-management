@@ -13,6 +13,24 @@ const create = async (req, res, next) => {
     }
 }
 
+const search = async (req, res, next) => {
+    try {
+        const request = {
+            name: req.query.name,
+            page: req.query.page,
+            size: req.query.size
+        };
+        const response = await categoryService.search(request);
+        res.status(200).json({
+            data: response.data,
+            pagination: response.pagination
+        })
+    } catch (e) {
+        next(e);
+    }
+}
+
 export default {
-    create
+    create,
+    search
 }

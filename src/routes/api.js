@@ -10,6 +10,7 @@ userRouter.post('/register', userController.register);
 const categoryRouter = express.Router();
 categoryRouter.use(authMiddleware);
 categoryRouter.post('/categories', categoryController.create);
+categoryRouter.get('/categories', categoryController.search);
 
 export {
     userRouter,
