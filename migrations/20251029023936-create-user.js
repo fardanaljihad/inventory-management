@@ -30,14 +30,12 @@ export default {
                 type: Sequelize.STRING
             },
             modified_at: {
-                allowNull: false,
                 type: Sequelize.DATE
             },
             modified_by: {
                 type: Sequelize.STRING
             },
             deleted_at: {
-                allowNull: false,
                 type: Sequelize.DATE
             },
             deleted_by: {

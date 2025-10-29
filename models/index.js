@@ -5,18 +5,28 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import process from 'process';
 import { Sequelize, DataTypes } from 'sequelize';
-import configFile from '../config/config.json' assert { type: 'json' };
+import { logger } from '../src/application/logging.js';
 
-// Untuk mendapatkan __dirname di ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const rawConfig = fs.readFileSync(path.join(__dirname, '../config/config.json'), 'utf-8');
+const configFile = JSON.parse(rawConfig);
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = configFile[env];
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  {
+    ...config,
+    logging: (msg) => logger.info(msg),
+  }
+);
 
 const files = fs
   .readdirSync(__dirname)
@@ -43,4 +53,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 export default db;
-
