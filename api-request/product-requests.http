@@ -1,0 +1,11 @@
+### POST create a new product
+POST http://localhost:3000/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NjE3MTQ5MjksImV4cCI6MTc2MTgwMTMyOX0.h03KsMaT18nvmnHEp__b0_5EC2aJZnPKyHO4mxYct2E
+
+{
+    "name": "Chocolatos",
+    "price": 12.5,
+    "stock": 100,
+    "categoryId": "b5817177-31f1-40d1-b1a3-6b3fb1671f51"
+}
