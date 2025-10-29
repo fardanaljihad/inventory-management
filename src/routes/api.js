@@ -19,6 +19,7 @@ categoryRouter.delete('/categories/:id', categoryController.del);
 const productRouter = express.Router();
 productRouter.use(authMiddleware);
 productRouter.post('/products', productController.create);
+productRouter.get('/products', productController.search);
 
 export {
     userRouter,

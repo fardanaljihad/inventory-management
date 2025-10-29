@@ -1,11 +1,15 @@
 ### POST create a new product
 POST http://localhost:3000/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NjE3MTQ5MjksImV4cCI6MTc2MTgwMTMyOX0.h03KsMaT18nvmnHEp__b0_5EC2aJZnPKyHO4mxYct2E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk
 
 {
-    "name": "Chocolatos",
+    "name": "Coffe",
     "price": 12.5,
     "stock": 100,
-    "categoryId": "b5817177-31f1-40d1-b1a3-6b3fb1671f51"
+    "categoryId": "de940239-9237-4ecd-9c17-3af93fe98fdb"
 }
+
+### GET all categories
+GET http://localhost:3000/products?name=&category_name=&page=1&limit=10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIzMDE1LCJleHAiOjE3NjE4MDk0MTV9.1lF7JJQvXTPEcZ5o0pKf6c4i1Fk-njAf2pXDqYScqTk

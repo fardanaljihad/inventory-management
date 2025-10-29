@@ -3,7 +3,7 @@
 ### POST register a new user
 POST http://localhost:3000/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIyMTM3LCJleHAiOjE3NjE4MDg1Mzd9.Y3B2rKwliVGl-TH2e1GhmB4KKOTC7xViGa_SXtdFYWc
+Authorization: Bearer [jwt_token]
 
 {
   "name": "User",
