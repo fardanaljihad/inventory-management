@@ -12,11 +12,17 @@ const searchCategoryValidation = Joi.object({
 });
 
 const getCategoryValidation = Joi.string()
-  .uuid({ version: 'uuidv4' })
-  .required();
+    .uuid({ version: 'uuidv4' })
+    .required();
+
+const updateCategoryValidation = Joi.object({
+    name: Joi.string().max(255).required(),
+    modifiedBy: Joi.string().email({ minDomainSegments: 2 }).required()
+});
 
 export {
     createCategoryValidation,
     searchCategoryValidation,
-    getCategoryValidation
+    getCategoryValidation,
+    updateCategoryValidation
 }
