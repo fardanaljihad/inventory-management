@@ -17,8 +17,17 @@ const searchProductValidation = Joi.object({
 
 const getProductValidation = Joi.string().uuid({ version: 'uuidv4' }).required();
 
+const updateProductValidation = Joi.object({
+    name: Joi.string().max(255).required(),
+    price: Joi.number().positive().required(),
+    stock: Joi.number().integer().positive().required(),
+    categoryId: Joi.string().uuid({ version: 'uuidv4' }).required(),
+    modifiedBy: Joi.string().email({ minDomainSegments: 2 }).required()
+})
+
 export {
     createProductValidation,
     searchProductValidation,
-    getProductValidation
+    getProductValidation,
+    updateProductValidation
 }

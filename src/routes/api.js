@@ -21,6 +21,7 @@ productRouter.use(authMiddleware);
 productRouter.post('/products', productController.create);
 productRouter.get('/products', productController.search);
 productRouter.get('/products/:id', productController.get);
+productRouter.put('/products/:id', productController.update);
 
 export {
     userRouter,

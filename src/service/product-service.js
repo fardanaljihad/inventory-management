@@ -1,6 +1,6 @@
 import { validate } from "../validation/validation.js";
 import db from '../../models/index.js';
-import { createProductValidation, getProductValidation, searchProductValidation } from "../validation/product-validation.js";
+import { createProductValidation, getProductValidation, searchProductValidation, updateProductValidation } from "../validation/product-validation.js";
 import { ResponseError } from "../error/response-error.js";
 import { Op } from "sequelize";
 
@@ -104,8 +104,77 @@ const get = async (id) => {
     return product;
 }
 
+const update = async (id, request) => {
+
+    const productId = validate(getProductValidation, id);
+
+    const product = await Product.findOne({
+        where: { id: productId },
+    });
+
+    if (!product) {
+        throw new ResponseError(404, "Product not found");
+    }
+
+    request = validate(updateProductValidation, request);
+
+    const countProduct = await Product.count({
+        where: {
+            name: request.name
+        }
+    });
+
+    if (countProduct === 1) {
+        throw new ResponseError(400, "Product already exists");
+    }
+
+    const data = {}
+    if (request.name) {
+        data.name = request.name;
+    }
+    if (request.price) {
+        data.price = request.price;
+    }
+    if (request.stock) {
+        data.stock = request.stock;
+    }
+    if (request.categoryId) {
+        const countCategory = await Category.count({
+            where: {
+                id: request.categoryId
+            }
+        });
+
+        if (countCategory !== 1) {
+            throw new ResponseError(400, "Category not found")
+        }
+
+        data.categoryId = request.categoryId;
+    }
+
+    data.modified_by = request.modifiedBy;
+    data.modified_at = new Date();
+
+    await Product.update(
+        data,
+        {
+            where: {
+                id: productId
+            },
+        }
+    );
+
+    return Product.findOne({
+        where: {
+            id: productId
+        },
+        attributes: ["id", "name", "price", "stock", "categoryId", "modified_by", "modified_at"]
+    });
+}
+
 export default {
     create,
     search,
-    get
+    get,
+    update
 }

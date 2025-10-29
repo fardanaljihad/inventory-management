@@ -82,7 +82,7 @@ const update = async (id, request) => {
     const categoryId = validate(getCategoryValidation, id);
 
     const category = await Category.findOne({
-        where: { id: id },
+        where: { id: categoryId },
     });
 
     if (!category) {
