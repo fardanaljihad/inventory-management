@@ -3,7 +3,7 @@
 ### POST register a new user
 POST http://localhost:3000/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NjE3MTQ5MjksImV4cCI6MTc2MTgwMTMyOX0.h03KsMaT18nvmnHEp__b0_5EC2aJZnPKyHO4mxYct2E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzYxNzIyMTM3LCJleHAiOjE3NjE4MDg1Mzd9.Y3B2rKwliVGl-TH2e1GhmB4KKOTC7xViGa_SXtdFYWc
 
 {
   "name": "User",
@@ -18,7 +18,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "john@example.com",
+  "email": "admin@example.com",
   "password": "password"
 }
 

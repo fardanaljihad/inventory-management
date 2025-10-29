@@ -4,7 +4,8 @@
   "description": "Sistem Manajemen Produk dan Kategori",
   "main": "src/main.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "db:reset": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate"
   },
   "jest": {
     "transform": {

@@ -37,7 +37,8 @@ export default {
                 type: Sequelize.STRING
             },
             modified_at: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: null
             },
             modified_by: {
                 type: Sequelize.STRING

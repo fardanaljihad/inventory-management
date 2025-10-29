@@ -1,4 +1,7 @@
 'use strict';
+import bcrypt from 'bcrypt';
+import { v4 as uuidv4 } from 'uuid';
+
 /** @type {import('sequelize-cli').Migration} */
 export default {
     async up(queryInterface, Sequelize) {
@@ -30,7 +33,8 @@ export default {
                 type: Sequelize.STRING
             },
             modified_at: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: null
             },
             modified_by: {
                 type: Sequelize.STRING
@@ -42,6 +46,16 @@ export default {
                 type: Sequelize.STRING
             }
         });
+
+        const hashedPassword = await bcrypt.hash('password', 10);
+        await queryInterface.bulkInsert('users', [{
+            id: uuidv4(),
+            name: 'admin',
+            email: 'admin@example.com',
+            password: hashedPassword,
+            created_at: new Date(),
+            created_by: 'system'
+        }]);
     },
     async down(queryInterface, Sequelize) {
         await queryInterface.dropTable('users');
